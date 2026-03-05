@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-sans' });
 
@@ -28,10 +29,18 @@ export default function RootLayout({
   return (
     <html lang="en" className={jetbrainsMono.variable}>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased max-w-dvw min-w-dvw  `}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased `}
       >
+        <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
         <Navbar/>
+            
         {children}
+          </ThemeProvider>
       </body>
     </html>
   );
