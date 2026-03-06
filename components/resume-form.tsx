@@ -3,13 +3,27 @@ import { Button } from "./ui/button"
 
 const ResumeForm = () => {
     return (
-        <form action={submitForm} className='max-w-md border border-primary p-5 mt-5'>
-            <label htmlFor="resume" className="block mb-3 "><span className="font-bold">Resume </span>
-                <input type="file" name="resume" id="resume" className="border-primary border px-3 mt-3" />
-            </label>
+        <form action={submitForm} className='w-md border border-primary p-5 mt-5'>
+
             <label htmlFor="jobdesc" className="block">
                 <span className="font-bold">Job Description</span>
-                <textarea className="block mb-3 border border-primary w-full p-3" name="jobdesc" id="jobdesc" placeholder="please paste your job description..." />
+                <textarea className="block mb-3 border border-primary w-full p-3" name="jobdesc" id="jobdesc" placeholder="please paste your job description..." required />
+            </label>
+            <label htmlFor="uploadFile1"
+                className=" text-slate-500 font-semibold text-base rounded max-w-md h-52 flex flex-col items-center justify-center cursor-pointer border-2 border-primary border-dashed mx-auto mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-11 mb-3 fill-gray-500" viewBox="0 0 32 32">
+                    <path
+                        d="M23.75 11.044a7.99 7.99 0 0 0-15.5-.009A8 8 0 0 0 9 27h3a1 1 0 0 0 0-2H9a6 6 0 0 1-.035-12 1.038 1.038 0 0 0 1.1-.854 5.991 5.991 0 0 1 11.862 0A1.08 1.08 0 0 0 23 13a6 6 0 0 1 0 12h-3a1 1 0 0 0 0 2h3a8 8 0 0 0 .75-15.956z"
+                        data-original="#000000" />
+                    <path
+                        d="M20.293 19.707a1 1 0 0 0 1.414-1.414l-5-5a1 1 0 0 0-1.414 0l-5 5a1 1 0 0 0 1.414 1.414L15 16.414V29a1 1 0 0 0 2 0V16.414z"
+                        data-original="#000000" />
+                </svg>
+                Upload Resume
+
+                <input type="file" id='resume' name="resume" className="hidden" required accept=".doc,.docx,.pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf"
+                />
+                <p className="text-xs font-medium text-slate-400 mt-2">PDF, DOC, DOCX are Allowed.</p>
             </label>
             <Button className="block pointer  " variant="default" >Check Score</Button>
         </form>
