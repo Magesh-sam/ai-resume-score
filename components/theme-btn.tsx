@@ -4,26 +4,33 @@ import { Moon, Sun, ToggleLeft } from "lucide-react"
 import { useTheme } from "next-themes"
 
 import { Button } from "@/components/ui/button"
+import { useEffect, useState } from "react"
 
 export function ThemeBtn() {
     const { setTheme, theme } = useTheme()
 
-   
 
-        const toggleTheme = () => {
-            if (document.startViewTransition) {
-                document.startViewTransition(() => {
-                    setTheme(theme === 'dark' ? 'light' : 'dark');
-                });
-            } else {
+    const [mounted, setMounted] = useState(false)
+
+    useEffect(() => {
+        setMounted(true)
+    }, [])
+
+    if (!mounted) return null
+    const toggleTheme = () => {
+        if (document.startViewTransition) {
+            document.startViewTransition(() => {
                 setTheme(theme === 'dark' ? 'light' : 'dark');
-            }
-        };
+            });
+        } else {
+            setTheme(theme === 'dark' ? 'light' : 'dark');
+        }
+    };
 
 
     return (
 
-        <Button className="cursor-pointer" variant="outline" size="icon" title="toggle theme" onClick={toggleTheme}>
+        <Button className="cursor-pointer border border-primary dark:border-primary" variant="outline" size="icon" title="toggle theme" onClick={toggleTheme}>
             {
                 theme === "light" ?
                     <Sun className="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" /> :
