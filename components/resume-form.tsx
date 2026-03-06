@@ -9,7 +9,7 @@ const ResumeForm = () => {
                 <span className="font-bold">Job Description</span>
                 <textarea className="block mb-3 border border-primary w-full p-3" name="jobdesc" id="jobdesc" placeholder="please paste your job description..." required />
             </label>
-            <label htmlFor="uploadFile1"
+            <label htmlFor="resume"
                 className=" text-slate-500 font-semibold text-base rounded max-w-md h-52 flex flex-col items-center justify-center cursor-pointer border-2 border-primary border-dashed mx-auto mb-3">
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-11 mb-3 fill-gray-500" viewBox="0 0 32 32">
                     <path
