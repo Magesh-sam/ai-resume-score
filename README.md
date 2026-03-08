@@ -90,3 +90,9 @@ ollama run mistral
 * **API Route Hangs / Fails:** Ensure the Ollama desktop application is running locally and that the Mistral model has been successfully downloaded (`ollama pull mistral`).
 
 * **PDF Parsing Errors:** The project utilizes a specific import structure (`pdf-parse/lib/pdf-parse.js`) to ensure compatibility with Next.js App Router and Webpack/Turbopack.
+
+## Screenshots
+![SS in Dark](https://github.com/Magesh-sam/ai-resume-score/blob/master/demo-dark.png)
+![SS in Light](https://github.com/Magesh-sam/ai-resume-score/blob/master/demo-light.png)
+
+  
