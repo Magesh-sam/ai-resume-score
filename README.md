@@ -1,36 +1,92 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Local AI Resume Scorer
 
-## Getting Started
+A privacy-first, local Applicant Tracking System (ATS) optimizer built with Next.js. This application allows you to upload a resume (PDF or DOCX) and compare it against a specific Job Description. It uses local Large Language Models (LLMs) via Ollama to evaluate the match score, identify missing keywords, and provide a concise reasoning—all without sending your sensitive data to external APIs.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+* **Privacy-First Validation:** Fully local LLM processing ensures your resume data never leaves your machine.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+* **Multi-Format Support:** Accurately extracts text from both `.pdf` and `.docx` files.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+* **Smart Scoring:** Evaluates hard skills, experience levels, and industry context to generate a 0-100 match score.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+* **Actionable Feedback:** Identifies exactly which keywords or skills are missing from your resume.
 
-## Learn More
+* **Modern UI:** Responsive design with full Dark/Light mode support built with Tailwind CSS.
 
-To learn more about Next.js, take a look at the following resources:
+## Tech Stack
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* **Frontend framework:** Next.js (React)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+* **Styling:** Tailwind CSS
 
-## Deploy on Vercel
+* **AI/LLM Integration:** [Ollama](https://ollama.com/) (Mistral model)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+* **File Parsing:** `pdf-parse` (PDF) & `mammoth` (DOCX)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+* **Validation:** Zod (for strictly typed JSON schemas)
+
+## Prerequisites
+
+Before running this project, ensure you have the following installed:
+
+1. **Node.js** (v18 or higher)
+
+2. **Ollama**: Download and install from [ollama.com](https://ollama.com/).
+
+Once Ollama is installed, you need to pull the `mistral` model. Open your terminal and run:
+
+\`\`\`bash
+ollama run mistral
+\`\`\`
+
+*Keep Ollama running in the background for the API to process requests.*
+
+## Installation
+
+1. Clone the repository:
+
+   \`\`\`bash
+   git clone <your-repo-url>
+   cd <your-repo-folder>
+   \`\`\`
+
+2. Install the project dependencies:
+
+   \`\`\`bash
+   npm install
+   # or
+   yarn install
+   # or
+   pnpm install
+   \`\`\`
+
+3. Start the Next.js development server:
+
+   \`\`\`bash
+   npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
+   \`\`\`
+
+4. Open <http://localhost:3000> in your browser to view the application.
+
+## Usage
+
+1. Paste the target **Job Description** into the provided text area.
+
+2. Click the upload area to select your **Resume** (`.pdf` or `.docx`).
+
+3. Click **Check Score**.
+
+4. Wait a few moments while the local Ollama instance analyzes the documents.
+
+5. Review your Match Score, Missing Keywords, and the AI's reasoning to improve your application!
+
+## Troubleshooting
+
+* **API Route Hangs / Fails:** Ensure the Ollama desktop application is running locally and that the Mistral model has been successfully downloaded (`ollama pull mistral`).
+
+* **PDF Parsing Errors:** The project utilizes a specific import structure (`pdf-parse/lib/pdf-parse.js`) to ensure compatibility with Next.js App Router and Webpack/Turbopack.
